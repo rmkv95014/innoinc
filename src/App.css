@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: HKGrotesk;
+  src: url('../public/hk-grotesk/OTF/HKGrotesk-Medium.otf');
+  src: url('../public/hk-grotesk/TTF/HKGrotesk-Medium.ttf');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: HKGrotesk, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-family: HKGrotesk, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.grow {
+  transition: all .3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.main-navbar {
+  margin-left: 15%;
+  width: 70%;
+  position: fixed;
+  z-index: 200;
+  background-color: #f5f3f3;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mobile-navbar {
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.main-heading {
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 0.5em;
+  padding-bottom: 1.0rem;
+  padding-top: 1rem;
+}
+
+.about {
+  background-color: rgb(255, 255, 255);
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.join-button {
+  color: rgb(255, 255, 255);
+  margin-left: 0.5em;
+  padding: 1em;
 }

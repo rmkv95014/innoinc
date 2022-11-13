@@ -1,0 +1,124 @@
+import { Link } from 'react-router-dom';
+import { Flex, Button, Menu, MenuButton, MenuList, MenuItem, Image, Spacer, Box, IconButton } from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import logo from './imgs/logo.png';
+import { FC } from 'react';
+import { motion, useScroll } from 'framer-motion'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+const Navbar: FC<any> = () => {
+
+    const { scrollYProgress } = useScroll();
+    const [display, setDisplay] = useState<'initial' | 'none'>('none');
+    const navigate = useNavigate();
+
+    return (
+        <>
+            <Box className='main-navbar' rounded='xl' display={['none', 'none', 'initial', 'initial']}>
+                <Box as={motion.div} style={{ scaleX: scrollYProgress, background: '#ff0055', height: '1vh' }} rounded='3xl' />
+                <Flex align='center' gap='0.25em'>
+                    {/* <Image src={logo} alt="Logo" /> */}
+                    <Spacer />
+                    <Menu>
+                        <MenuButton
+                            as={Button}
+                            rightIcon={<ChevronDownIcon />}
+                            _hover={{ bg: 'gray.400' }}
+                            _focus={{ boxShadow: 'outline' }}
+                        >
+                            About
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>
+                                <Link to='/team'>
+                                    The Team
+                                </Link>
+                            </MenuItem>
+                            <MenuItem><Link to='/chapters'>Chapters</Link></MenuItem>
+                        </MenuList>
+                    </Menu>
+                    <Menu>
+                        <MenuButton
+                            as={Button}
+                            rightIcon={<ChevronDownIcon />}
+                            _hover={{ bg: 'gray.400' }}
+                            _focus={{ boxShadow: 'outline' }}
+                        >
+                            Events
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>
+                                <Link to='/team'>
+                                    IDC
+                                </Link>
+                            </MenuItem>
+                            <MenuItem>Calendar</MenuItem>
+                        </MenuList>
+                    </Menu>
+                    <Menu>
+                        <MenuButton
+                            as={Button}
+                            rightIcon={<ChevronDownIcon />}
+                            _hover={{ bg: 'gray.400' }}
+                            _focus={{ boxShadow: 'outline' }}
+                        >
+                            Resources
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>Newsletter</MenuItem>
+                            <MenuItem>
+                                <Link to='/curriculum'>Curriculum</Link>
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+                    <Button>Get Involved</Button>
+                    <Button>Contact Us</Button>
+                </Flex>
+            </Box>
+            <IconButton
+                size="lg"
+                aria-label='Open Menu'
+                mr={2}
+                icon={<HamburgerIcon />}
+                display={['flex', 'flex', 'none', 'none']}
+                justifySelf='end'
+                p='1em'
+                onClick={() => setDisplay('initial')}
+                position='fixed'
+            />
+            <Flex
+                className='mobile-navbar'
+                bg={'gray.100'}
+                display={display}
+            >
+                <Flex>
+                    <IconButton
+                        aria-label='Close Menu'
+                        padding='1em'
+                        icon={<CloseIcon />}
+                        size='lg'
+                        onClick={() => setDisplay('none')}
+                    />
+                </Flex>
+                <Flex
+                    flexDir={'column'}
+                    justify='center'
+                    gap='1rem'
+                >
+                    <Button onClick={() => navigate('/team')}>The Team</Button>
+                    <Button onClick={() => navigate('/chapters')}>Chapters</Button>
+                    <Button onClick={() => navigate('/team')}>IDC</Button>
+                    <Button>Calendar</Button>
+                    <Button>Resources</Button>
+                    <Button onClick={() => navigate('/curriculum')}>Curriculum</Button>
+                    <Button>Get Involved</Button>
+                    <Button>Contact Us</Button>
+                </Flex>
+            </Flex>
+        </>
+    );
+}
+
+export default Navbar;

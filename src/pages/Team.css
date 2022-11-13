@@ -1,0 +1,37 @@
+#main-content {
+    padding-top: 5rem;
+}
+
+#heading {
+    text-align: center;
+    color: #6290c8;
+}
+
+.text-container {
+    padding: 2rem 0.75rem 0rem 0.75rem;
+    margin-right: 1rem;
+}
+
+#vert-text {
+    color: white;
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+}
+
+#new-line {
+    white-space: pre-line;
+    text-align: end;
+}
+
+.personal-info {
+    color: white;
+    padding: 5rem 0.25rem 0.25rem 2rem
+}
+
+/* #profile-cards {
+    margin-right: 2rem
+} */
+
+#info-container {
+    padding: 8rem 0.25rem 0rem 0.75rem;
+}
