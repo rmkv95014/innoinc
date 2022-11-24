@@ -52,7 +52,20 @@ const CurriculumSection: FC<any> = () => {
                         <Box margin={0} width={'fit-content'}>
                             <Heading color='white' p='.5em'>{index + 1}.</Heading>
                         </Box>
-                        <Heading p='.5em' textAlign='center' justifySelf='center' color='white' fontSize={(video[0].title.length > 42 ? 'xl' : '3xl')}>{video[0].title}</Heading>
+                        <Heading
+                            p='.5em'
+                            textAlign='center'
+                            justifySelf='center'
+                            color='white'
+                            fontSize={[
+                                video[0].title.length > 32 ? '0.5em' : '1em',
+                                video[0].title.length > 36 ? '0.5em' : '1.25em',
+                                video[0].title.length > 36 ? '0.75em' : '1.5em',
+                                video[0].title.length > 42 ? '1em' : '2em'
+                            ]}
+                        >
+                            {video[0].title}
+                        </Heading>
                     </Flex>);
             })}
         </Flex>

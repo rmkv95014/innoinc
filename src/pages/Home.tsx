@@ -1,21 +1,24 @@
-import { FC } from "react";
-import { Box, ChakraProvider, extendTheme, Grid, GridItem, Heading, Text, Button, Flex, Image, chakra } from '@chakra-ui/react';
+import { FC, Fragment } from "react";
+import { Box, ChakraProvider, extendTheme, Grid, GridItem, Heading, Text, Button, Flex, Image, chakra, AspectRatio } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import logo from '../altLogo.png'
 
 const Home: FC<any> = () => {
     return (
-        <Grid templateColumns={'repeat(2, 1fr)'} marginLeft='20%' width='60%' paddingTop='5rem' paddingBottom='8rem'
-            display={['flex', 'flex', 'grid', 'grid']}
-            flexDir={['column', 'column', 'initial', 'initial']}
+        <Grid
+            templateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
+            marginLeft={['10%', '12%', '15%', '20%']}
+            width={['60%', '76%', '70%', '60%']}
+            paddingTop={['16%', '14%', '10%', '6%']}
+
+            paddingBottom={['8rem']}
         >
-            <GridItem backgroundColor='#a7cab1' paddingRight='0.5rem' className='cover-full'>
+            <GridItem backgroundColor='#a7cab1' paddingRight='0.5rem' h='100%' margin='0em 0em 1rem 0em'>
                 <Box className='main-heading'>
-                    <Heading fontWeight={'bold'} padding='0em 0.75em 0em 0.25em' fontSize='5em'>inno biotech</Heading>
-                    <Heading padding='0em 0.75em 0em 0.25em' fontSize='5em'>inc</Heading>
+                    <Heading fontWeight={'bold'} padding='0em 0.75em 0em 0.25em' fontSize='4em'>inno biotech inc</Heading>
                 </Box>
-                <Box className='about'>
-                    <Heading fontWeight={'normal'} fontSize='2.75em' paddingLeft='0.5em'>
+                <Box backgroundColor={'white'} p='1rem 0em 1em 0em' h='27em'>
+                    <Heading fontWeight={'normal'} fontSize='2em' paddingLeft='0.5em' width='70%'>
                         a <span style={{ color: '#a7cab1' }}>100% </span>immersive biotech experience by students, for students.
                     </Heading>
                     <Text paddingTop='1.5em' paddingBottom='.25rem' paddingLeft='1em' fontStyle='italic'>interested in starting a chapter?</Text>
@@ -32,15 +35,19 @@ const Home: FC<any> = () => {
                     </Button>
                 </Box>
             </GridItem>
-            <GridItem backgroundColor='#26619c' as={Flex} flexDir='column' alignItems={'center'} justifyContent='center'>
-                <Image src={logo} boxSize='55%' marginTop='15%' />
-                <Text fontStyle={'italic'} marginTop='10%' fontWeight={'light'} fontSize='2xl' color='white'>learn. inspire. innovate.</Text>
+            <GridItem backgroundColor='#26619c' as={Flex} flexDir='column' alignItems={'center'} justifyContent='center' p={['1.5em', '1em', '.5em', '.25em']}>
+                <AspectRatio ratio={3 / 5} width='15em' p='1em' m='1em'>
+                    <Image src={logo} />
+                </AspectRatio>
+                <Text fontStyle={'italic'} marginTop='5%' fontWeight={'light'} fontSize='2xl' color='white'>learn. inspire. innovate.</Text>
             </GridItem>
-            <GridItem backgroundColor={'#6290c8'} as='div' display={'flex'} flexDir='column' paddingTop='1rem'>
-                <Heading paddingTop='2rem' fontWeight={'normal'} paddingLeft='1rem'>we combine <span style={{ color: '#a7cab1' }}>learning</span> with <span style={{ color: '#a7cab1' }}>innovation</span> for a unique student experience</Heading>
+            <GridItem backgroundColor={'#6290c8'} as='div' display={'flex'} flexDir='column' paddingTop='1rem' marginTop='2rem'>
+                <Heading paddingTop='2rem' fontWeight={'normal'} paddingLeft='1rem'>
+                    we combine <span style={{ color: '#a7cab1' }}>learning</span> with <span style={{ color: '#a7cab1' }}>innovation</span> for a unique student experience
+                </Heading>
                 <Text textAlign={'center'} fontSize='xl' paddingTop='5rem' fontStyle={'italic'} justifySelf='flex-end'>click on an icon to check out our curriculums!</Text>
             </GridItem>
-            <GridItem backgroundColor='rgb(255,255,255)' paddingTop='2rem' paddingBottom='2rem'>
+            <GridItem backgroundColor='rgb(255,255,255)' marginTop='2rem' paddingTop='2rem' paddingBottom='2rem'>
                 <Flex flexDir={'column'} justify='space-evenly' gap='2.5rem'>
                     <Box
                         as={motion.a}

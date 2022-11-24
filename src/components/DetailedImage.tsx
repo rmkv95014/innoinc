@@ -1,16 +1,13 @@
 import { FC } from 'react';
-import { Flex, Text, Heading } from '@chakra-ui/react';
+import { Flex, Text, Heading, FlexProps } from '@chakra-ui/react';
 
 interface ProfileInfoProps {
     img: string;
     href: string;
-    rounded?: string;
-    w: string | string[];
-    h: string | string[];
     children?: any;
 }
 
-const DetailedImage: FC<ProfileInfoProps> = ({ img, href, rounded, w, h, children }) => {
+const DetailedImage: FC<FlexProps & ProfileInfoProps> = ({ img, href, rounded, w, h, marginRight, children, marginBottom }) => {
     return (
         <Flex
             as='a'
@@ -27,7 +24,9 @@ const DetailedImage: FC<ProfileInfoProps> = ({ img, href, rounded, w, h, childre
             color='white'
             w={w}
             h={h}
+            marginBottom={marginBottom}
             rounded={rounded ? rounded : 'none'}
+            marginRight={marginRight ? marginRight : '0em'}
         >
             {children}
         </Flex>

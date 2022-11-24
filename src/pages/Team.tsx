@@ -106,9 +106,25 @@ const Team: FC<any> = () => {
             <Heading id='heading' paddingBottom='0.75em' fontSize='4em'>The INNO Team</Heading>
             {rowsInfo.map((rowInfo: Row) => {
                 return (
-                    <Flex marginBottom='2em'>
-                        <Flex bgColor={rowInfo.color} className='text-container' rounded='2xl'>
-                            <Heading id='vert-text' marginBottom='0.5em'>{rowInfo.rowTitle}</Heading>
+                    <Flex
+                        marginBottom='2em'
+                        flexDir={['column', 'column', 'row', 'row']}
+                        flexWrap={['wrap', 'wrap', 'nowrap', 'nowrap']}
+                        align={['center', 'center', 'initial', 'initial']}
+                    >
+                        <Flex
+                            bgColor={rowInfo.color}
+                            p={['1rem 0.5rem 0rem 0.5rem', '1rem 0.5rem 0rem 0.5rem', '1.75rem 0.75rem 0rem 0.75rem', '2rem 0.75rem 0rem 0.75rem']}
+                            rounded='2xl'
+                            mr={'1rem'}
+                        >
+                            <Heading
+                                color='white'
+                                id='vert-text'
+                                marginBottom={['0.125em', '0.25em', '0.5em', '0.5em']}
+                            >
+                                {rowInfo.rowTitle}
+                            </Heading>
                         </Flex>
                         {rowInfo.members.map((member: Member) => {
                             return (
@@ -117,6 +133,8 @@ const Team: FC<any> = () => {
                                     href={`mailto: ${member.name.substring(0, member.name.indexOf(' ')).toLowerCase()}@innoinc.org`}
                                     w={'14em'}
                                     h={'14em'}
+                                    marginRight={['0.5em', '0.75em', '1em', '2em']}
+                                    marginBottom={['2em', '1.75em', '0em', '0em']}
                                 >
                                     <Box id='info-container'>
                                         <Text>

@@ -8,7 +8,7 @@ const Curriculum: FC<any> = () => {
     return (
         <>
             <Heading paddingTop='6rem' textAlign='center'>CURRICULUM</Heading>
-            <Flex flexDir={'row'} gap='3.6em' p='3rem 0rem 8rem 0rem' alignItems={'center'} justify='center'>
+            <Flex flexDir={['column', 'column', 'column', 'row']} gap='3.6em' p='3rem 0rem 8rem 0rem' alignItems={'center'} justify='center'>
                 <Box as='a' href='/curriculum/bio' style={{ zoom: '2' }}>
                     <Box rounded='full' borderRadius='50%' bgColor='#e7c5e2'>
                         <Image src={bio} boxSize='11rem' />

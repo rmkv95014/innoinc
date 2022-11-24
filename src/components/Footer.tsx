@@ -7,8 +7,8 @@ const Footer: FC<any> = () => {
         <>
             <Box padding='2rem'>
                 <Flex align={'center'} flexDir='column'>
-                    <Heading>Interested in joining our work?</Heading>
-                    <Flex flexDir={'row'} flex={1} gap='1rem' padding='1.5rem'>
+                    <Heading textAlign={'center'}>Interested in joining our work?</Heading>
+                    <Flex flexDir={['column', 'column', 'row', 'row']} flex={1} gap='1em' padding='1.5em'>
                         <Button backgroundColor={'#6290c8'}>start a chapter</Button>
                         <Button backgroundColor='#a7cab1'>sponsor us</Button>
                         <Button backgroundColor='#26619c'>donate</Button>
@@ -16,7 +16,14 @@ const Footer: FC<any> = () => {
                     </Flex>
                 </Flex>
             </Box>
-            <Grid templateColumns='repeat(4, 2fr)' gap={'1rem'} textColor='black' backgroundColor='#6290c8' p='-2rem'>
+            <Grid
+                display={['none', 'none', 'grid', 'grid']}
+                templateColumns={['none', 'none', 'repeat(2, 1fr)', 'repeat(4, 2fr)']}
+                gap={'1rem'}
+                textColor='black'
+                backgroundColor='#6290c8'
+                p='-2rem'
+            >
                 <GridItem padding='4.5rem'>
                     <Heading size='md' fontWeight={'bolder'}
                         _hover={{
@@ -96,7 +103,7 @@ const Footer: FC<any> = () => {
                     </Text>
                 </GridItem>
             </Grid>
-            <Text backgroundColor='#6290c8' textAlign={'center'}>© 2022 INNO Inc. All Rights Reserved.</Text>
+            <Text backgroundColor={['white', 'white', '#6290c8', '#6290c8']} textAlign={'center'}>© 2022 INNO Inc. All Rights Reserved.</Text>
         </>
     );
 }

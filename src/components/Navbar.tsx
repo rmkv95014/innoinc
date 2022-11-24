@@ -50,7 +50,7 @@ const Navbar: FC<any> = () => {
                         </MenuButton>
                         <MenuList>
                             <MenuItem>
-                                <Link to='/team'>
+                                <Link to='/idc'>
                                     IDC
                                 </Link>
                             </MenuItem>
