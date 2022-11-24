@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 Pull the code from the github repo using ```git clone https://github.com/rmkv95014/innoinc.git```\
+Once that is done, install all missing dependencies by running ```npm install``` in the command line
 In the project directory, you can run:
 
 ### `npm start`
