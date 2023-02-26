@@ -1,11 +1,12 @@
-import { Box, Grid, GridItem, Heading, Image, Link, TypographyProps, Flex } from '@chakra-ui/react';
-import { FC, useState } from 'react';
+import { Box, Grid, GridItem, Heading, Image, Link, TypographyProps, Flex, AspectRatio } from '@chakra-ui/react';
+import { FC, ReactElement, useState } from 'react';
 import './IDC.css'
 import rMuthukumar from '../imgs/team/rMuthukumar.jpg'; // placeholder image
 import judgingGuidelines from '../imgs/judging_guidelines/judgingGuidelines.png';
+import idcGuide from '../documents/idc-guide.pdf';
 
 interface BoxTitle {
-    title: string;
+    title: string | ReactElement<any, any>;
     color: string;
 }
 
@@ -28,7 +29,7 @@ const IDC: FC<any> = () => {
 
     const idcBoxes: Item[] = [{
         boxTitle: {
-            title: 'Innovation Development Conference',
+            title: <Heading p='1em 0em 0em 0.5em' fontSize={'3em'}><a href={idcGuide} target='_blank'>Innovation Development Conference</a></Heading>,
             color: '#26619c'
         }, aboutBox: [{
             img: rMuthukumar,
@@ -64,7 +65,15 @@ const IDC: FC<any> = () => {
                     <div style={{ paddingRight: '1em' }}>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='right' pr={'1em'} p='0.35em' >3-5 page write-up project</Heading>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='right' pr={'1em'} p='0.35em' >
-                            <Link onClick={() => { setClicked(!linkClicked) }} textDecor='underline'>submission guidelines</Link>
+                            <Link
+                                onClick={() => {
+                                    setClicked(!linkClicked);
+                                    window.scrollTo(0, 0);
+                                }}
+                                textDecor='underline'
+                            >
+                                submission guidelines
+                            </Link>
                         </Heading>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='right' pr={'1em'} p='0.35em' pb={'2em'}>→2020 winning project</Heading>
                     </div>
@@ -75,12 +84,12 @@ const IDC: FC<any> = () => {
             headingAlign: 'right',
             children: (
                 <>
-                    <div style={{ paddingLeft: '1em' }}>
+                    <div style={{ paddingLeft: '1em', height: '100%' }}>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='left' pl={'1em'} p='0.35em' >5-7 minute oral presentation</Heading>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='left' pl={'1em'} p='0.35em' >
                             <Link onClick={() => {
                                 setClicked(!linkClicked);
-                                window.scrollTo({ top: 0, left: 0 })
+                                window.scrollTo(0, 0)
                             }} textDecor='underline'>submission guidelines</Link>
                         </Heading>
                         <Heading fontSize='1.25em' fontWeight={'hairline'} textAlign='left' pl={'1em'} p='0.35em' pb={'2em'}>→2020 winning project</Heading>
@@ -95,7 +104,7 @@ const IDC: FC<any> = () => {
         }, aboutBox: [{
             children: (
                 <>
-                    <Flex align='center' justify='center' flexDir={'column'}>
+                    <Flex align='center' justify='center' flexDir={'column'} >
                         <Box bgColor='#a7cab1' rounded='20em' boxSize={'fit-content'} p='1.25em 1.25em 1.25em 1.25em'>
                             <Heading fontSize='2em' textAlign='center'>Winner</Heading>
                         </Box>
@@ -145,19 +154,26 @@ const IDC: FC<any> = () => {
                 onClick={() => setClicked(false)}
             >
                 <Image src={judgingGuidelines} boxSize='70%' />
-                {/* <h1 style={{ paddingTop: '25rem' }}>Nah</h1> */}
             </div>
-            <Grid templateColumns={'repeat(2, 1fr)'} marginLeft='20%' width='60%' paddingTop='5rem'
+            <Grid
+                templateColumns={['repeat(1, 1fr)', 'repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
+                marginLeft='20%' width='60%' paddingTop='5rem'
+                marginBottom={'10%'}
                 display={[linkClicked ? 'none' : 'flex', linkClicked ? 'none' : 'flex', linkClicked ? 'none' : 'grid', linkClicked ? 'none' : 'grid']}
                 flexDir={['column', 'column', 'initial', 'initial']}
             >
-                {idcBoxes.map((box: Item) => {
+                {idcBoxes.map((box: Item, i: number) => {
                     return (
                         box.orientation === 'lr' ? <>
-                            <GridItem bgColor={box.boxTitle.color} color='white'>
-                                <Heading p='1em'>{box.boxTitle.title}</Heading>
+                            <GridItem bgColor={box.boxTitle.color} color='white' height='120%' paddingBottom='1rem' marginBottom={i === idcBoxes.length - 1 ? '10em' : '14rem'} id='clear'>
+                                {(typeof box.boxTitle.title === 'string') ?
+                                    <Heading p='1em 0em 0em 0.5em' fontSize='3em'>
+                                        {box.boxTitle.title}
+                                    </Heading> :
+                                    box.boxTitle.title
+                                }
                             </GridItem>
-                            <GridItem bgColor='#a7cab1' pl={['0em', '0em', '0.5em', '0.5em']}>
+                            <GridItem bgColor='#a7cab1' pl={['0em', '0em', '0.5em', '0.5em']} height='120%' marginBottom={i < idcBoxes.length - 1 ? '14em' : '10rem'} id='clear'>
                                 {box.aboutBox.map((subBox: SubBox, i: number) => {
                                     let array: string[] = [];
                                     for (const char of (subBox.heading) || '') {
@@ -173,7 +189,7 @@ const IDC: FC<any> = () => {
                                     }
                                     return (
                                         <>
-                                            <Box bgColor={'white'} marginBottom={i < box.aboutBox.length - 1 ? '1em' : '0em'}>
+                                            <Box bgColor={'white'} marginBottom={i < box.aboutBox.length - 1 ? '1em' : '0em'} height={subBox.children ? '100%' : '48%'}>
                                                 {subBox.heading ? <Heading textAlign={'right'} p='0.75em'>
                                                     {array.map((value: string, index: number) => {
                                                         if (value.charAt(0) === '<') {
@@ -185,7 +201,18 @@ const IDC: FC<any> = () => {
                                                             return value;
                                                     })}
                                                 </Heading> : <></>}
-                                                {subBox.img ? <Image src={subBox.img} boxSize='30%' verticalAlign='middle' ml='35%' padding='1em' align='center' /> : <></>}
+                                                {subBox.img ?
+                                                    <AspectRatio ratio={3 / 5} width='15em' p='1em' m='1em'>
+                                                        <Image
+                                                            src={subBox.img}
+                                                            // boxSize='30%'
+                                                            verticalAlign='middle'
+                                                            ml='35%'
+                                                            align='center'
+                                                            p='1em'
+                                                        />
+                                                    </AspectRatio>
+                                                    : <></>}
                                                 {subBox.children || <></>}
                                             </Box>
                                         </>
@@ -193,7 +220,7 @@ const IDC: FC<any> = () => {
                                 })}
                             </GridItem>
                         </> : <>
-                            <GridItem bgColor='#a7cab1' pr={['0em', '0em', '0.5em', '0.5em']}>
+                            <GridItem bgColor='#a7cab1' pl={['0em', '0em', '0.5em', '0.5em']} height='120%' marginBottom={i < idcBoxes.length - 1 ? '14em' : '10rem'} id='clear'>
                                 {box.aboutBox.map((subBox: SubBox, i: number) => {
                                     let array: string[] = [];
                                     for (const char of (subBox.heading) || '') {
@@ -209,8 +236,8 @@ const IDC: FC<any> = () => {
                                     }
                                     return (
                                         <>
-                                            <Box bg='white' marginBottom={i < box.aboutBox.length - 1 ? '1em' : '0em'}>
-                                                {subBox.heading ? <Heading textAlign={box.aboutBox[i].headingAlign || 'left'} p='0.75em'>
+                                            <Box bgColor={'white'} marginBottom={i < box.aboutBox.length - 1 ? '1em' : '0em'} height='48%'>
+                                                {subBox.heading ? <Heading textAlign={'right'} p='0.75em'>
                                                     {array.map((value: string, index: number) => {
                                                         if (value.charAt(0) === '<') {
                                                             return <span style={{
@@ -221,15 +248,26 @@ const IDC: FC<any> = () => {
                                                             return value;
                                                     })}
                                                 </Heading> : <></>}
-                                                {subBox.img ? <Image src={subBox.img} boxSize='30%' verticalAlign='middle' ml='35%' padding='1em' /> : <></>}
+                                                {subBox.img ?
+                                                    <AspectRatio ratio={3 / 5} width='15em' p='1em' m='1em'>
+                                                        <Image
+                                                            src={subBox.img}
+                                                            // boxSize='30%'
+                                                            verticalAlign='middle'
+                                                            ml='35%'
+                                                            align='center'
+                                                            p='1em'
+                                                        />
+                                                    </AspectRatio>
+                                                    : <></>}
                                                 {subBox.children || <></>}
                                             </Box>
                                         </>
                                     );
                                 })}
                             </GridItem>
-                            <GridItem bgColor={box.boxTitle.color} color='white'>
-                                <Heading p='1em'>{box.boxTitle.title}</Heading>
+                            <GridItem bgColor={box.boxTitle.color} color='white' height='120%' paddingBottom='1rem' marginBottom={i === idcBoxes.length - 1 ? '10em' : '14rem'} id='clear'>
+                                <Heading p='1em 0em 0em 0.5em' fontSize={'3em'}>{box.boxTitle.title}</Heading>
                             </GridItem>
                         </>
                     );

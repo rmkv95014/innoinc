@@ -32,11 +32,11 @@ const Navbar: FC<any> = () => {
                         </MenuButton>
                         <MenuList>
                             <MenuItem>
-                                <Link to='/team'>
+                                <Link to='/team/' onClick={() => window.scrollTo(0, 0)}>
                                     The Team
                                 </Link>
                             </MenuItem>
-                            <MenuItem><Link to='/chapters'>Chapters</Link></MenuItem>
+                            <MenuItem><Link to='/chapters/' onClick={() => window.scrollTo(0, 0)}>Chapters</Link></MenuItem>
                         </MenuList>
                     </Menu>
                     <Menu>
@@ -50,7 +50,7 @@ const Navbar: FC<any> = () => {
                         </MenuButton>
                         <MenuList>
                             <MenuItem>
-                                <Link to='/idc'>
+                                <Link to='/idc' onClick={() => window.scrollTo(0, 0)}>
                                     IDC
                                 </Link>
                             </MenuItem>
@@ -69,11 +69,10 @@ const Navbar: FC<any> = () => {
                         <MenuList>
                             <MenuItem>Newsletter</MenuItem>
                             <MenuItem>
-                                <Link to='/curriculum'>Curriculum</Link>
+                                <Link to='/curriculum/' onClick={() => window.scrollTo(0, 0)}>Curriculum</Link>
                             </MenuItem>
                         </MenuList>
                     </Menu>
-                    <Button>Get Involved</Button>
                     <Button>Contact Us</Button>
                 </Flex>
             </Box>
@@ -107,13 +106,37 @@ const Navbar: FC<any> = () => {
                     justify='center'
                     gap='1rem'
                 >
-                    <Button onClick={() => navigate('/team')}>The Team</Button>
-                    <Button onClick={() => navigate('/chapters')}>Chapters</Button>
-                    <Button onClick={() => navigate('/team')}>IDC</Button>
+                    <Button onClick={() => {
+                        navigate('/team/#');
+                        window.scrollTo(0, 0)
+                    }}>
+                        The Team
+                    </Button>
+                    <Button onClick={() => {
+                        navigate('/chapters/#');
+                        window.scrollTo(0, 0)
+                    }}>
+                        Chapters
+                    </Button>
+                    <Button onClick={() => {
+                        navigate('/idc/#');
+                        window.scrollTo(0, 0)
+                    }}>
+                        IDC
+                    </Button>
                     <Button>Calendar</Button>
-                    <Button>Resources</Button>
-                    <Button onClick={() => navigate('/curriculum')}>Curriculum</Button>
-                    <Button>Get Involved</Button>
+                    <Button onClick={() => {
+                        navigate('/curriculum/#');
+                        window.scrollTo(0, 0)
+                    }}>
+                        Newsletter
+                    </Button>
+                    <Button onClick={() => {
+                        navigate('/curriculum/#');
+                        window.scrollTo(0, 0)
+                    }}>
+                        Curriculum
+                    </Button>
                     <Button>Contact Us</Button>
                 </Flex>
             </Flex>

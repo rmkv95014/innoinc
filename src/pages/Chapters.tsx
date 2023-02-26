@@ -81,7 +81,7 @@ const Chapters: FC<any> = () => {
         <Box paddingTop={'7rem'}>
             <Heading textAlign={'center'} color='#26619c'>INNO Chapters</Heading>
             <Grid
-                templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)']}
+                templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)', 'repeat(4, 1fr)']}
                 gap={[2, 4, 6, 8]}
                 marginLeft='15%'
                 alignItems={'center'}
